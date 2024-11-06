@@ -1,8 +1,13 @@
-// mongodb+srv://borekamohelo:<4g1AYOJKAKMeyXpd>@cluster0.mj2km.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
-const express = require('express')
+import express from 'express'
+import cors from 'cors'
+import connectDB from './database/db.js'
 const app = express()
 
-app.listen(3000, ()=> {
-    console.log('App is Running');
+
+
+app.use(cors())
+
+app.listen(5000, ()=> {
+    connectDB()
+    console.log('Server is Running');
 })
