@@ -1,16 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NoteModal from "../components/NoteModal";
 import axios from "axios";
+import NoteCard from "../components/NoteCard";
 
 
 const Home = () => {
 
     const [isModalOpen, setModalOpen] = useState(false);
-   
-   
+    const [notes, setNotes] = useState([]);
 
-   
+    useEffect( () =>{
+       
+        getAllNotes()
+    }, [])
 
+    const getAllNotes = async ()=> {
+        try {
+         const {data} = await axios.get("http://localhost:5000/note")
+         setNotes(data.notes)
+        } catch(error) {
+         // use toastify to show the error
+         console.log(error)
+        }
+     }
     const closeModal = ( ) => {
         setModalOpen(false)
     }
@@ -25,6 +37,7 @@ const Home = () => {
 
             if(response.data.success) {
                 //Show success toastify alert
+                getAllNotes()
                 closeModal()
             }
         }catch(error){
@@ -43,9 +56,15 @@ const Home = () => {
                 
             </div>
 
-            
+            <div className="space-y-5 mt-5">
+                {notes.map( note =>(
+                    < NoteCard 
+                    key={note.id} note={note}
+                    
+                    />
+                ))}
 
-           
+            </div>
 
             <button 
             onClick={() => setModalOpen(true)}
