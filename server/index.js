@@ -7,7 +7,7 @@ import noteRouter from './routes/note.js'
 const app = express()
 app.use(express.json())
 app.use(cors())
-app.use('/ad', noteRouter)
+app.use("/note", noteRouter)
 
 
 

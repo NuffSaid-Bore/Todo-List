@@ -1,15 +1,51 @@
 import { useState } from "react";
 import NoteModal from "../components/NoteModal";
+import axios from "axios";
+
 
 const Home = () => {
 
-    const [isModalOpen, setModalOpen] = useState(false)
+    const [isModalOpen, setModalOpen] = useState(false);
+   
+   
 
-    const closeModal = () => {
+   
+
+    const closeModal = ( ) => {
         setModalOpen(false)
     }
+
+   
+    const addNote = async (title , description, isComplete) =>{
+        
+        try{
+            const response = await axios.post("http://localhost:5000/note/add",
+            { title , description, isComplete }
+            );
+
+            if(response.data.success) {
+                //Show success toastify alert
+                closeModal()
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
     return (
-        <div className='bg-grey-100 min-h-screen'>
+        <div className='bg-grey-500 min-h-screen p-10 '>
+
+            <div
+                className="block rounded-lg bg-black p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                <h5
+                className="mb-2 text-2xl text-center font-medium leading-tight text-white dark:text-neutral-50">
+                Todo List
+                </h5>
+                
+            </div>
+
+            
+
+           
 
             <button 
             onClick={() => setModalOpen(true)}
@@ -18,7 +54,9 @@ const Home = () => {
                 +
             </button>
             {isModalOpen && <NoteModal 
-            closeModal={closeModal}/>}
+            closeModal={closeModal}
+            addNote={addNote}
+            />}
 
         </div>
     )

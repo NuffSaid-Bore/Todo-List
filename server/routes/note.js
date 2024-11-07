@@ -1,23 +1,26 @@
 import express from 'express'
-import Note from '../models/Note';
+import Note from '../models/Note.js';
 
 const router  = express.Router()
 
 router.post("/add", async (req ,res) => {
 
     try{
-        const { title, description } = req.body;
+        const { title, description , isComplete} = req.body;
 
         const newNote = new Note({
             title,
-            description
-        })
+            description,
+            isComplete: isComplete !== undefined ? isComplete : false
+        });
 
         await newNote.save();
-        return res.status(200).json({success: true, message: "Note Successfully Added" });
+        return res.status(200)
+        .json({success: true, message: "Note Successfully Added" });
     }catch(error){
         console.log(error.message)
-        return res.status(500).json({success: false, message: "Error in Adding Note" });
+        return res.status(500)
+        .json({success: false, message: "Error in Adding Note" });
     }
 })
 

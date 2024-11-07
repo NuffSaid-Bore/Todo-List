@@ -1,28 +1,23 @@
-import axios from "axios";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+
+import {  useState } from "react";
 
 
-// eslint-disable-next-line react/prop-types
-const NoteModal = ({closeModal}) => {
+
+const NoteModal = ({closeModal, addNote}) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [isComplete, setIsComplete] = useState(false);
 
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
-            const response = await axios.post("http://localhost:5000/add",
-            { title , description }
-            );
+        addNote(title, description,isComplete)
+    };
 
-            if(response.data.success) {
-                Navigate('/')
-                closeModal()
-            }
-        }catch(error){
-            console.log(error)
-        }
+    const handleCheckboxChange = (e) => {
+        setIsComplete(e.target.checked);
     };
     
     return (
@@ -50,13 +45,24 @@ const NoteModal = ({closeModal}) => {
                         placeholder="Enter Note Description"
                         className="border p-2 w-full mb-4 rounded-md"
                     />
+                    
+                    <div className="flex items-center mb-4">
+                        <input 
+                        id="default-checkbox" 
+                        type="checkbox" 
+                        checked={isComplete}
+                        onChange={handleCheckboxChange} 
+                        className="w-4 h-4 text-purple-600 bg-purple-100 border-purple-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-purple-800 focus:ring-2 dark:bg-purple-700 dark:border-purple-600"/>
+                        <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-purple-900 dark:text-purple-300">Complete</label>
+                    </div>
+
 
                     <div className="flex justify-end mt-4">
                         <button 
                             type="submit"
                             className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
                         >
-                            Add Note
+                           Add Note
                         </button>
                     </div>
                 </form>
