@@ -8,6 +8,7 @@ const Home = () => {
 
     const [isModalOpen, setModalOpen] = useState(false);
     const [notes, setNotes] = useState([]);
+    const [currentNote, setCurrentNote] = useState(null);
 
     useEffect( () =>{
        
@@ -23,15 +24,36 @@ const Home = () => {
          console.log(error)
         }
      }
+
     const closeModal = ( ) => {
         setModalOpen(false)
     }
 
-   
+    const updateNote = (note) => {
+        setCurrentNote(note)
+        setModalOpen(true)
+    }
+
     const addNote = async (title , description, isComplete) =>{
         
         try{
             const response = await axios.post("http://localhost:5000/note/add",
+            { title , description, isComplete }
+            );
+
+            if(response.data.success) {
+                //Show success toastify alert
+                getAllNotes()
+                closeModal()
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const editNote = async (id, title, description, isComplete)=> {
+        try{
+            const response = await axios.put(`http://localhost:5000/note/${id}`,
             { title , description, isComplete }
             );
 
@@ -60,6 +82,7 @@ const Home = () => {
                 {notes.map( note =>(
                     < NoteCard 
                     key={note.id} note={note}
+                    updateNote={updateNote}
                     
                     />
                 ))}
@@ -75,6 +98,8 @@ const Home = () => {
             {isModalOpen && <NoteModal 
             closeModal={closeModal}
             addNote={addNote}
+            currentNote={currentNote}
+            editNote ={editNote}
             />}
 
         </div>

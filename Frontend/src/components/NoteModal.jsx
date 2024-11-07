@@ -1,19 +1,31 @@
 /* eslint-disable react/prop-types */
 
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
-const NoteModal = ({closeModal, addNote}) => {
+const NoteModal = ({closeModal, addNote, currentNote, editNote}) => {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [isComplete, setIsComplete] = useState(false);
 
-   
+    useEffect(() => {
+        if(currentNote){
+            setTitle(currentNote.title)
+            setDescription(currentNote.description)
+            setIsComplete(currentNote.isComplete)
+        }
+    }, [currentNote])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        addNote(title, description,isComplete)
+        if(currentNote){
+            editNote(currentNote._id, title, description, isComplete)
+        }else{
+            addNote(title, description,isComplete)
+        }
+        
     };
 
     const handleCheckboxChange = (e) => {
@@ -30,7 +42,7 @@ const NoteModal = ({closeModal, addNote}) => {
                     X
                 </button>
 
-                <h2 className="text-xl font-bold mb-4 text-purple-400 hover:text-grey-400">Add New Note</h2>
+                <h2 className="text-xl font-bold mb-4 text-purple-400 hover:text-grey-400">{currentNote ? "Update Note" : "Add New Note"}</h2>
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
@@ -62,7 +74,7 @@ const NoteModal = ({closeModal, addNote}) => {
                             type="submit"
                             className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
                         >
-                           Add Note
+                           {currentNote ? "Update Note" : "Add Note"} 
                         </button>
                     </div>
                 </form>
