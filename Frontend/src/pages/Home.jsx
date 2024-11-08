@@ -67,10 +67,10 @@ const Home = () => {
         }
     }
     return (
-        <div className='bg-grey-500 min-h-screen p-10 '>
+        <div className='bg-purple-100 h-screen p-10 '>
 
             <div
-                className="block rounded-lg bg-black p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                className="rounded-lg h-40 p-0 bg-black shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
                 <h5
                 className="mb-2 text-2xl text-center font-medium leading-tight text-white dark:text-neutral-50">
                 Todo List
@@ -78,7 +78,7 @@ const Home = () => {
                 
             </div>
 
-            <div className="space-y-5 mt-5">
+            <div className="space-y-5 mt-5 h-4/5 overflow-y-auto">
                 {notes.map( note =>(
                     < NoteCard 
                     key={note.id} note={note}
