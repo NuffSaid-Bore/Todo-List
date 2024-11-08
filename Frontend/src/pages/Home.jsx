@@ -66,16 +66,30 @@ const Home = () => {
             console.log(error)
         }
     }
+
+    const incompleteCount = notes.filter((note) => !note.isComplete).length;
+    const completeCount = notes.filter((note) => note.isComplete).length;
     return (
         <div className='bg-purple-100 h-screen p-10 '>
 
             <div
-                className="rounded-lg h-40 p-0 bg-black shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                className="rounded-3xl h-40  shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
                 <h5
-                className="mb-2 text-2xl text-center font-medium leading-tight text-white dark:text-neutral-50">
+                className="mb-2 text-5xl text-center font-medium leading-tight text-black dark:text-neutral-50">
                 Todo List
                 </h5>
                 
+                <div className="flex justify-between mt-20 ml-56 mr-56 px-5">
+                    
+                    <div className="bg-red-500 text-white p-2 rounded-full">
+                        Incomplete: {incompleteCount}
+                    </div>
+
+                    
+                    <div className="bg-green-500 text-white p-2 rounded-full">
+                        Complete: {completeCount}
+                    </div>
+                </div>
             </div>
 
             <div className="space-y-5 mt-5 h-4/5 overflow-y-auto">
