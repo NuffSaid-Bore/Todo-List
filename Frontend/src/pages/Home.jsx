@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NoteModal from "../components/NoteModal";
 import axios from "axios";
 import NoteCard from "../components/NoteCard";
+import { toast } from "react-toastify";
 
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
          const {data} = await axios.get("http://localhost:5000/note")
          setNotes(data.notes)
         } catch(error) {
-         // use toastify to show the error
+         toast.error(error)
          console.log(error)
         }
      }
@@ -42,11 +43,12 @@ const Home = () => {
             );
 
             if(response.data.success) {
-                //Show success toastify alert
+                toast.success("Note has been added successfully")
                 getAllNotes()
                 closeModal()
             }
         }catch(error){
+            toast.error(error)
             console.log(error)
         }
     }
@@ -58,11 +60,26 @@ const Home = () => {
             );
 
             if(response.data.success) {
-                //Show success toastify alert
+                toast.success("Note has been edited successfully")
                 getAllNotes()
                 closeModal()
             }
         }catch(error){
+            toast.error(error)
+            console.log(error)
+        }
+    }
+
+    const deleteNote = async (id)=> {
+        try{
+            const response = await axios.delete(`http://localhost:5000/note/${id}`);
+
+            if(response.data.success) {
+                toast.success("Note has been deleted successfully")
+                getAllNotes()
+            }
+        }catch(error){
+            toast.error(error)
             console.log(error)
         }
     }
@@ -92,11 +109,12 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="space-y-5 mt-5 h-4/5 overflow-y-auto">
+            <div className="space-y-5 mt-5 h-4/5 overflow-y-auto z-10">
                 {notes.map( note =>(
                     < NoteCard 
                     key={note.id} note={note}
                     updateNote={updateNote}
+                    deleteNote={deleteNote}
                     
                     />
                 ))}
@@ -105,7 +123,7 @@ const Home = () => {
 
             <button 
             onClick={() => setModalOpen(true)}
-                className="fixed right-10 bottom-10 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+                className="fixed right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
                 aria-label="Add item">
                 +
             </button>
