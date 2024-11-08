@@ -77,11 +77,11 @@ The project is structured as follows:
 
 ```bash
 .
-├── backend/                   # Node.js backend
+├── server/                   # Node.js backend
 │   ├── models/                # Mongoose models
 │   ├── routes/                # API routes
-│   ├── server.js              # Main backend server file
-├── frontend/                  # React frontend
+│   ├── index.js              # Main backend server file
+├── Frontend/                  # React frontend
 │   ├── src/
 │   │   ├── components/        # React components (e.g., NoteCard, NoteModal)
 │   │   ├── App.jsx            # Main App component
