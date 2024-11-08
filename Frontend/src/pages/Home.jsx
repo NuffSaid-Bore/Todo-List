@@ -12,7 +12,6 @@ const Home = () => {
     const [currentNote, setCurrentNote] = useState(null);
 
     useEffect( () =>{
-       
         getAllNotes()
     }, [])
 
@@ -84,6 +83,11 @@ const Home = () => {
         }
     }
 
+    const openAddModal = () => {
+        setCurrentNote(null);
+        setModalOpen(true);
+    };
+
     const incompleteCount = notes.filter((note) => !note.isComplete).length;
     const completeCount = notes.filter((note) => note.isComplete).length;
     return (
@@ -96,7 +100,7 @@ const Home = () => {
                 Todo List
                 </h5>
                 
-                <div className="flex justify-between mt-20 ml-56 mr-56 px-5">
+                <div className="flex justify-between mt-20  px-5">
                     
                     <div className="bg-red-500 text-white p-2 rounded-full">
                         Incomplete: {incompleteCount}
@@ -122,7 +126,7 @@ const Home = () => {
             </div>
 
             <button 
-            onClick={() => setModalOpen(true)}
+            onClick={openAddModal}
                 className="fixed right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
                 aria-label="Add item">
                 +
