@@ -42,7 +42,7 @@ const Home = () => {
       });
 
       if (response.data.success) {
-        toast.success("Note has been added successfully");
+        toast.success("Note has been Added successfully");
         getAllNotes();
         closeModal();
       }
@@ -61,12 +61,12 @@ const Home = () => {
       });
 
       if (response.data.success) {
-        toast.success("Note has been edited successfully");
+        toast.success("Note has been Updated successfully");
         getAllNotes();
         closeModal();
       }
     } catch (error) {
-      toast.error("Error editing note");
+      toast.error("Error Updated note");
       console.log(error);
     }
   };
@@ -76,11 +76,11 @@ const Home = () => {
       const response = await axios.delete(`http://localhost:5000/note/${id}`);
 
       if (response.data.success) {
-        toast.success("Note has been deleted successfully");
+        toast.success("Note has been Deleted successfully");
         getAllNotes();
       }
     } catch (error) {
-      toast.error("Error deleting note");
+      toast.error("Error Deleting note");
       console.log(error);
     }
   };
@@ -101,14 +101,20 @@ const Home = () => {
       title: 'All',
       content: (
         <div className="space-y-5 mt-5">
-          {notes.map((note) => (
-            <NoteCard
-              key={note.id}
-              note={note}
-              updateNote={updateNote}
-              deleteNote={deleteNote}
-            />
-          ))}
+          {notes.length === 0 ? (
+            <div className="flex justify-center items-center h-full text-xl text-gray-500">
+              No Todo Records
+            </div>
+          ) : (
+            notes.map((note) => (
+              <NoteCard
+                key={note.id}
+                note={note}
+                updateNote={updateNote}
+                deleteNote={deleteNote}
+              />
+            ))
+          )}
         </div>
       ),
     },
@@ -116,14 +122,20 @@ const Home = () => {
       title: 'Complete',
       content: (
         <div className="space-y-5 mt-5">
-          {completeNotes.map((note) => (
-            <NoteCard
-              key={note.id}
-              note={note}
-              updateNote={updateNote}
-              deleteNote={deleteNote}
-            />
-          ))}
+          {completeNotes.length === 0 ? (
+            <div className="flex justify-center items-center h-full text-xl text-gray-500">
+              No Complete Todos
+            </div>
+          ) : (
+            completeNotes.map((note) => (
+              <NoteCard
+                key={note.id}
+                note={note}
+                updateNote={updateNote}
+                deleteNote={deleteNote}
+              />
+            ))
+          )}
         </div>
       ),
     },
@@ -131,14 +143,20 @@ const Home = () => {
       title: 'InComplete',
       content: (
         <div className="space-y-5 mt-5">
-          {incompleteNotes.map((note) => (
-            <NoteCard
-              key={note.id}
-              note={note}
-              updateNote={updateNote}
-              deleteNote={deleteNote}
-            />
-          ))}
+          {incompleteNotes.length === 0 ? (
+            <div className="flex justify-center items-center h-full text-xl text-gray-500">
+              No Incomplete Todos
+            </div>
+          ) : (
+            incompleteNotes.map((note) => (
+              <NoteCard
+                key={note.id}
+                note={note}
+                updateNote={updateNote}
+                deleteNote={deleteNote}
+              />
+            ))
+          )}
         </div>
       ),
     },
