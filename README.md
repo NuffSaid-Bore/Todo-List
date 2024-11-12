@@ -32,6 +32,26 @@ git clone https://github.com/NuffSaid-Bore/Todo-List.git
 cd Todo-List
 ```
 ### Install Dependencies
+
+## DataBase
+Create a MongoDB Atlas database. Create the following in the root folder server
+Register your mngodb atlas account on: [MongoDB Atlas](https://account.mongodb.com/account/register)
+If you have an account on mongodb atlas login and copy your connection string and provide the following details
+[Login here](https://account.mongodb.com/account/login)
+````bash
+.env
+````
+inside the folder provide the following details: 
+````bash
+MONGO_USER=
+MONGO_PASS=
+MONGO_DB_NAME=
+````
+MONGO_USER= is the username
+MONGO_PASS=auto generated password or the password you created when adding your databas after you login
+MONGO_DB_NAME=schema name/  tablet name where your data will be saved
+
+
 ## Backend (Node.js & Express)
 1. Navigate to the backend directory:
 ```bash
