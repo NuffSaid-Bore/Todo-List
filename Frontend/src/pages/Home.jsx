@@ -163,44 +163,50 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-purple-100 h-screen p-10 flex flex-col">
-      <div className="rounded-3xl h-40 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-        <h5 className="mb-2 text-5xl text-center font-medium leading-tight text-black dark:text-neutral-50">
-          Todo List
-        </h5>
-
-        <div className="flex justify-between mt-20 px-5">
-          <div className="bg-red-500 text-white p-2 rounded-full">
-            Incomplete: {incompleteCount}
-          </div>
-
-          <div className="bg-green-500 text-white p-2 rounded-full">
-            Complete: {completeCount}
-          </div>
+    <div className="bg-purple-100 h-screen flex flex-col">
+    {/* Header Section */}
+    <div className="rounded-3xl h-40 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] p-5">
+      <h5 className="mb-2 text-5xl text-center font-medium leading-tight text-black dark:text-neutral-50">
+        Todo List
+      </h5>
+  
+      <div className="flex justify-between mt-20 px-5">
+        <div className="bg-red-500 text-white p-2 rounded-full">
+          Incomplete: {incompleteCount}
+        </div>
+  
+        <div className="bg-green-500 text-white p-2 rounded-full">
+          Complete: {completeCount}
         </div>
       </div>
-
-      <div className="flex-grow overflow-y-auto mt-5">
-        <TabsComponent items={items} />
-      </div>
-
-      <button
-        onClick={openAddModal}
-        className="fixed right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
-        aria-label="Add item"
-      >
-        +
-      </button>
-
-      {isModalOpen && (
-        <NoteModal
-          closeModal={closeModal}
-          addNote={addNote}
-          currentNote={currentNote}
-          editNote={editNote}
-        />
-      )}
     </div>
+  
+    {/* Tabs Section */}
+    <div className="flex-grow overflow-hidden pl-5 pr-5 pb-9">
+      <TabsComponent items={items} />
+    </div>
+  
+    {/* Fixed Add Item Button */}
+    <button
+        onClick={openAddModal}
+        className="fixed right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none 
+            sm:right-8 sm:bottom-4 sm:text-2xl sm:p-3 sm:w-12 sm:h-12"
+        aria-label="Add item"
+        >
+        +
+    </button>
+  
+    {/* Modal for Adding/Editing Notes */}
+    {isModalOpen && (
+      <NoteModal
+        closeModal={closeModal}
+        addNote={addNote}
+        currentNote={currentNote}
+        editNote={editNote}
+      />
+    )}
+  </div>
+
   );
 };
 
