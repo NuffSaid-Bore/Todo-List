@@ -136,7 +136,7 @@ git clone https://github.com/NuffSaid-Bore/Todo-List.git
 ```
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the <a href="https://opensource.org/licenses/MIT">LICENSE</a> file for details.
 
 ## Contact
 If you have any questions or suggestions, feel free to open an issue or contact me directly on [WhatsApp](https://wa.link/asimu8), [Email Me](mailto:borekamohelo@gmail.com)
