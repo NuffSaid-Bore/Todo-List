@@ -103,7 +103,7 @@ const Home = () => {
         <div className="space-y-5 mt-5">
           {notes.length === 0 ? (
             <div className="flex justify-center items-center h-full text-xl text-gray-500">
-              No Todo Records
+              No Notes Records
             </div>
           ) : (
             notes.map((note) => (
@@ -124,7 +124,7 @@ const Home = () => {
         <div className="space-y-5 mt-5">
           {completeNotes.length === 0 ? (
             <div className="flex justify-center items-center h-full text-xl text-gray-500">
-              No Complete Todos
+              No Complete Notes
             </div>
           ) : (
             completeNotes.map((note) => (
@@ -145,7 +145,7 @@ const Home = () => {
         <div className="space-y-5 mt-5">
           {incompleteNotes.length === 0 ? (
             <div className="flex justify-center items-center h-full text-xl text-gray-500">
-              No Incomplete Todos
+              No Incomplete Notes
             </div>
           ) : (
             incompleteNotes.map((note) => (
