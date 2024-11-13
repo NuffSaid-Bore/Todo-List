@@ -189,7 +189,7 @@ const Home = () => {
     {/* Fixed Add Item Button */}
     <button
       onClick={openAddModal}
-      className="fixed right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
+      className="fixed hover:animate-bounce right-10 bottom-10 z-20 bg-purple-500 text-3xl text-white font-bold p-4 rounded-full hover:bg-purple-600 focus:ring-2 focus:ring-purple-400 focus:outline-none"
       aria-label="Add item"
     >
       +
