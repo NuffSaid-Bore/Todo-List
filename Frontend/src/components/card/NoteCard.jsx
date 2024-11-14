@@ -16,7 +16,7 @@ const NoteCard = ({note, updateNote, deleteNote}) => {
 
         <div className="flex justify-end mt-2">
             <button 
-                className="text-purple-500 mr-2"
+                className="text-indigo-500 mr-2"
                 onClick={() => updateNote(note)}
             >
                 <FaEdit />

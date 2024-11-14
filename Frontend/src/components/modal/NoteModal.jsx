@@ -36,13 +36,13 @@ const NoteModal = ({closeModal, addNote, currentNote, editNote}) => {
         <div className="fixed inset-0 bg-gray-800 bg-opacity-15 flex justify-center items-center z-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
             <div className="bg-white p-4 sm:p-6 md:p-8 rounded-lg relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
             <button 
-                className="absolute top-3 right-3 sm:top-5 sm:right-5 text-gray-600 hover:text-purple-400 font-bold"
+                className="absolute top-3 right-3 sm:top-5 sm:right-5 text-gray-600 hover:text-indigo-400 font-bold"
                 onClick={closeModal} 
             >
                 X
             </button>
     
-            <h2 className="text-lg sm:text-xl font-bold mb-4 text-purple-400 hover:text-grey-400">
+            <h2 className="text-lg sm:text-xl font-bold mb-4 text-indigo-400 hover:text-grey-400">
                 {currentNote ? "Update Note" : "Add New Note"}
             </h2>
             <form onSubmit={handleSubmit}>
@@ -66,15 +66,15 @@ const NoteModal = ({closeModal, addNote, currentNote, editNote}) => {
                         type="checkbox" 
                         checked={isComplete}
                         onChange={handleCheckboxChange} 
-                        className="w-4 h-4 text-purple-600 bg-purple-100 border-purple-300 rounded focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-purple-800 focus:ring-2 dark:bg-purple-700 dark:border-purple-600"
+                        className="w-4 h-4 text-indigo-600 bg-indigo-100 border-indigo-300 rounded focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-indigo-800 focus:ring-2 dark:bg-indigo-700 dark:border-indigo-600"
                     />
-                    <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-purple-900 dark:text-purple-300">Complete</label>
+                    <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-indigo-900 dark:text-indigo-300">Complete</label>
                 </div>
     
                 <div className="flex justify-end mt-4">
                     <button 
                         type="submit"
-                        className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+                        className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
                     >
                         {currentNote ? "Update Note" : "Add Note"} 
                     </button>
