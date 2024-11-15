@@ -9,7 +9,7 @@ This project is a Todo List application built with React for the frontend and No
 - Development Tools: Nodemon, VS Code
 
 ## Preview Site
-[Click to Preview](http://localhost:5173/)
+[Click to Preview](https://todo-list-frontend-f64c.onrender.com/)
 
 ## Getting Started
 ### Prerequisites
