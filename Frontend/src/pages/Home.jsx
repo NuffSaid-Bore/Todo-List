@@ -16,7 +16,7 @@ const Home = () => {
 
   const getAllNotes = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/note");
+      const { data } = await axios.get("https://todo-list-backend-7w0b.onrender.com/note");
       setNotes(data.notes);
     } catch (error) {
       toast.error("Error fetching notes");
@@ -35,7 +35,7 @@ const Home = () => {
 
   const addNote = async (title, description, isComplete) => {
     try {
-      const response = await axios.post("http://localhost:5000/note/add", {
+      const response = await axios.post("https://todo-list-backend-7w0b.onrender.com/note/add", {
         title,
         description,
         isComplete,
@@ -54,7 +54,7 @@ const Home = () => {
 
   const editNote = async (id, title, description, isComplete) => {
     try {
-      const response = await axios.put(`http://localhost:5000/note/${id}`, {
+      const response = await axios.put(`https://todo-list-backend-7w0b.onrender.com/note/${id}`, {
         title,
         description,
         isComplete,
@@ -73,7 +73,7 @@ const Home = () => {
 
   const deleteNote = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/note/${id}`);
+      const response = await axios.delete(`https://todo-list-backend-7w0b.onrender.com/note/${id}`);
 
       if (response.data.success) {
         toast.success("Note has been Deleted successfully");
