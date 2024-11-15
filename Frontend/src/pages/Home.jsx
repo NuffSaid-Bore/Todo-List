@@ -166,11 +166,11 @@ const Home = () => {
     <div className="bg-indigo-100 h-screen flex flex-col">
     {/* Header Section */}
     <div className="rounded-3xl h-40 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
-      <h5 className="mb-2 text-5xl text-center font-medium leading-tight text-black dark:text-neutral-50">
+      <h5 className="mb-2 mt-10 text-5xl text-center font-medium leading-tight text-black dark:text-neutral-50">
        Todo List
       </h5>
   
-      <div className="flex justify-between mt-20 px-5">
+      <div className="flex justify-between mt-10 px-5">
         <div className="bg-red-500 text-white p-2 rounded-full">
           Incomplete: {incompleteCount}
         </div>
